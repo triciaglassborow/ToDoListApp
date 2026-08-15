@@ -13,24 +13,12 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ToDoTask[0].ListID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ToDoTask[0].TaskName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ToDoTask[0].Details)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ToDoTask[0].DueDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ToDoTask[0].Priority)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ToDoTask[0].IsComplete)
-            </th>
+            <th>List</th>
+            <th>Task</th>
+            <th>Details</th>
+            <th>Due Date</th>
+            <th>Priority</th>
+            <th>Complete</th>
             <th></th>
         </tr>
     </thead>
@@ -55,12 +43,6 @@
             <td>
                 @Html.DisplayFor(model => item.IsComplete)
             </td>
-            <td>
-                <a asp-page="./Edit" asp-route-taskid="@item.TaskID">Edit</a> |
-                <a asp-page="./Details" asp-route-taskid="@item.TaskID">Details</a> |
-                <a asp-page="./Delete" asp-route-taskid="@item.TaskID">Delete</a>
-            </td>
-        </tr>
-}
+        </tr>}
     </tbody>
 </table>

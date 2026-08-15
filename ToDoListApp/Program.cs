@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using ToDoListApp.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("ToDoListAppContext") ?? throw new InvalidOperationException("Connection string 'ToDoListAppContext' not found.");
 
@@ -8,6 +10,14 @@ builder.Services.AddDbContext<ToDoListAppContext>(options => options.UseSqlServe
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
+
+//seeding database with initial data
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
