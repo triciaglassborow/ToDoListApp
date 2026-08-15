@@ -1,0 +1,59 @@
+@page
+@model ToDoListApp.Pages.ToDoTasks.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>ToDoTask</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ToDoTask.ListID" class="control-label"></label>
+                <input asp-for="ToDoTask.ListID" class="form-control" />
+                <span asp-validation-for="ToDoTask.ListID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToDoTask.TaskName" class="control-label"></label>
+                <input asp-for="ToDoTask.TaskName" class="form-control" />
+                <span asp-validation-for="ToDoTask.TaskName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToDoTask.Details" class="control-label"></label>
+                <input asp-for="ToDoTask.Details" class="form-control" />
+                <span asp-validation-for="ToDoTask.Details" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToDoTask.DueDate" class="control-label"></label>
+                <input asp-for="ToDoTask.DueDate" class="form-control" />
+                <span asp-validation-for="ToDoTask.DueDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToDoTask.Priority" class="control-label"></label>
+                <input asp-for="ToDoTask.Priority" class="form-control" />
+                <span asp-validation-for="ToDoTask.Priority" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToDoTask.IsComplete" class="control-label"></label>
+                <input asp-for="ToDoTask.IsComplete" class="form-check-input" />
+                <span asp-validation-for="ToDoTask.IsComplete" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,66 @@
+@page
+@model ToDoListApp.Pages.ToDoTasks.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDoTask[0].ListID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDoTask[0].TaskName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDoTask[0].Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDoTask[0].DueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDoTask[0].Priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDoTask[0].IsComplete)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ToDoTask) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.ListID)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.TaskName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Details)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.DueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.IsComplete)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-taskid="@item.TaskID">Edit</a> |
+                <a asp-page="./Details" asp-route-taskid="@item.TaskID">Details</a> |
+                <a asp-page="./Delete" asp-route-taskid="@item.TaskID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
