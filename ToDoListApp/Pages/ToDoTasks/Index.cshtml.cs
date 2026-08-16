@@ -17,8 +17,20 @@ public class IndexModel : PageModel
 
     public IList<ToDoTask> ToDoTask { get; set; } = default!;
 
-    public async Task OnGetAsync()
+    public async Task OnGetAsync(int? listId)
     {
-        ToDoTask = await _context.ToDoTask.ToListAsync();
+        if (listId.HasValue) //tasks in a list
+        {
+            ToDoTask = await _context.ToDoTask
+                .Where(t => t.ListID == listId.Value)
+                .Include(t => t.ToDoList)
+                .ToListAsync();
+        }
+        else //all tasks
+        {
+            ToDoTask = await _context.ToDoTask
+                .Include(t => t.ToDoList)
+                .ToListAsync();
+        }
     }
 }

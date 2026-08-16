@@ -33,6 +33,6 @@ public class CreateModel : PageModel
         _context.ToDoList.Add(ToDoList);
         await _context.SaveChangesAsync();
 
-        return RedirectToPage("./Index");
+        return RedirectToPage("/Index");
     }
 }

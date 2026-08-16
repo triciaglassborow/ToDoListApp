@@ -1,15 +1,11 @@
 @page
 @model ToDoListApp.Pages.ToDoTasks.IndexModel
 
+<h1>Tasks</h1>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -19,35 +15,42 @@
             <th>Due Date</th>
             <th>Priority</th>
             <th>Complete</th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ToDoTask) {
-        <tr>
-            <td>
-                @Html.DisplayFor(model => item.ListID)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.TaskName)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Details)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.DueDate)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Priority)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.IsComplete)
-            </td>
-            <td>
-                    <a asp-page="./Edit" asp-route-taskid="@item.TaskID">Edit</a> |
-                    <a asp-page="./Details" asp-route-taskid="@item.TaskID">Details</a> |
-                    <a asp-page="./Delete" asp-route-taskid="@item.TaskID">Delete</a>
-            </td>
-        </tr>}
+        @if (Model.ToDoTask.Any())
+        {
+            foreach (var item in Model.ToDoTask)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.ListID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.TaskName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Details)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.DueDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Priority)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.IsComplete)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-taskid="@item.TaskID">Edit</a> |
+                        <a asp-page="./Details" asp-route-taskid="@item.TaskID">Details</a> |
+                        <a asp-page="./Delete" asp-route-taskid="@item.TaskID">Delete</a>
+                    </td>
+                </tr>
+            }
+        }else
+        {
+            <p>No tasks in this list yet.</p>
+        }
     </tbody>
 </table>

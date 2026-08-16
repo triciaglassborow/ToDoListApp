@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
+@using ToDoListApp.Models
+@inject ToDoListAppContext ToDoContext
+<head>  
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - To Do List</title>
@@ -16,8 +18,13 @@
     <aside>
         <div class="sidebar">
             <a href="/Index">Home</a>
-            <a href="/Privacy">Privacy</a>
-            <a href="/ToDoTasks">Tasks</a>
+            @foreach (var list in ToDoContext.ToDoList)
+            {
+                <a href="/ToDoTasks?listId=@list.ListID">
+                    @list.ListName
+                </a>
+            }
+            <a href="/ToDoLists/Create">+ Add List</a>
         </div>
     </aside>
     <div class="content">

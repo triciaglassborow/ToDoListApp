@@ -5,8 +5,13 @@ using ToDoListApp.Models;
 
 namespace ToDoListApp.Pages.ToDoLists;
 
+
 public class IndexModel : PageModel
 {
+    public IList<ToDoTask> ToDoTask { get; set; } = default!;
+
+    public int? ListID { get; set; }
+
     private readonly ToDoListAppContext _context;
 
     public IndexModel(ToDoListAppContext context)
@@ -16,8 +21,17 @@ public class IndexModel : PageModel
 
     public IList<ToDoList> ToDoList { get; set; } = default!;
 
-    public async Task OnGetAsync()
+    public async Task OnGetAsync(int? listId)
     {
-        ToDoList = await _context.ToDoList.ToListAsync();
+        ListID = listId;
+
+        var query = _context.ToDoTask.AsQueryable();
+
+        if (listId.HasValue)
+        {
+            query = query.Where(t => t.ListID == listId.Value);
+        }
+
+        ToDoTask = await query.ToListAsync();
     }
 }

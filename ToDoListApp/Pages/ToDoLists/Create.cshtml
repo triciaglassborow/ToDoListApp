@@ -5,9 +5,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>ToDoList</h4>
+<h1>Create New List</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,11 +16,6 @@
                 <label asp-for="ToDoList.ListName" class="control-label"></label>
                 <input asp-for="ToDoList.ListName" class="form-control" aria-required="true"/>
                 <span asp-validation-for="ToDoList.ListName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ToDoList.ToDoTasks" class="control-label"></label>
-                <input asp-for="ToDoList.ToDoTasks" class="form-control" />
-                <span asp-validation-for="ToDoList.ToDoTasks" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
