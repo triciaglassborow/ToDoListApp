@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ToDoListApp.Models;
 
-namespace ToDoListApp.Pages.ToDoTasks;
+namespace ToDoListApp.Pages.ToDoLists;
 
 public class IndexModel : PageModel
 {
@@ -15,10 +14,10 @@ public class IndexModel : PageModel
         _context = context;
     }
 
-    public IList<ToDoTask> ToDoTask { get; set; } = default!;
+    public IList<ToDoList> ToDoList { get; set; } = default!;
 
     public async Task OnGetAsync()
     {
-        ToDoTask = await _context.ToDoTask.ToListAsync();
+        ToDoList = await _context.ToDoList.ToListAsync();
     }
 }

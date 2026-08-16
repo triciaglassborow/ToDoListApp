@@ -17,6 +17,7 @@ namespace ToDoListApp.Models
         public DateTime? DueDate { get; set; }
         public string? Priority { get; set; }
         public bool IsComplete { get; set; }
+        public ToDoList ToDoList { get; set; }
     }
 
     public static class SeedData
